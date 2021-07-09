@@ -1,10 +1,10 @@
 import 'dart:collection';
 
-import 'package:flutter_wanandroid/blocs/bloc_provider.dart';
-import 'package:flutter_wanandroid/data/protocol/models.dart';
-import 'package:flutter_wanandroid/data/repository/collect_repository.dart';
-import 'package:flutter_wanandroid/event/event.dart';
-import 'package:flutter_wanandroid/utils/util_index.dart';
+import 'package:flutter_agent_app/blocs/bloc_provider.dart';
+import 'package:flutter_agent_app/data/protocol/models.dart';
+import 'package:flutter_agent_app/data/repository/collect_repository.dart';
+import 'package:flutter_agent_app/event/event.dart';
+import 'package:flutter_agent_app/utils/util_index.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:rxdart/rxdart.dart';
 

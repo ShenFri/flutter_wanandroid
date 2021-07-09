@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_wanandroid/common/component_index.dart';
-import 'package:flutter_wanandroid/data/repository/user_repository.dart';
+import 'package:flutter_agent_app/common/component_index.dart';
+import 'package:flutter_agent_app/data/repository/user_repository.dart';
 
 class UserRegisterPage extends StatelessWidget {
   @override

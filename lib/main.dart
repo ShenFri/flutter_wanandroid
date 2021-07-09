@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_wanandroid/common/component_index.dart';
-import 'package:flutter_wanandroid/ui/pages/main_page.dart';
-import 'package:flutter_wanandroid/ui/pages/page_index.dart';
+import 'package:flutter_agent_app/common/component_index.dart';
+import 'package:flutter_agent_app/ui/pages/main_page.dart';
+import 'package:flutter_agent_app/ui/pages/page_index.dart';
+import 'package:flutter_agent_app/ui/pages/user/user_login_page.dart';
 
 import 'common/global.dart';
 
@@ -36,8 +39,9 @@ class MyAppState extends State<MyApp> {
   }
 
   void _init() {
-//    DioUtil.openDebug();
+   DioUtil.openDebug();
     Options options = DioUtil.getDefOptions();
+    options.contentType = ContentType.parse("application/x-www-form-urlencoded");
     options.baseUrl = Constant.server_address;
     String cookie = SpUtil.getString(BaseConstant.keyAppToken);
     if (ObjectUtil.isNotEmpty(cookie)) {
@@ -87,9 +91,10 @@ class MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return new MaterialApp(
       routes: {
-        BaseConstant.routeMain: (ctx) => MainPage(),
+        // BaseConstant.routeMain: (ctx) => MainPage(),
+        BaseConstant.routeLogin: (ctx) =>  UserLoginPage(),
       },
-      home: new SplashPage(),
+      home: new UserLoginPage(),
       theme: ThemeData.light().copyWith(
         brightness: Brightness.dark,
         primaryColor: _themeColor,

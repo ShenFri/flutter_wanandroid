@@ -1,9 +1,9 @@
 import 'package:base_library/base_library.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_wanandroid/blocs/bloc_index.dart';
-import 'package:flutter_wanandroid/common/common.dart';
-import 'package:flutter_wanandroid/ui/pages/user/user_login_page.dart';
-import 'package:flutter_wanandroid/utils/util_index.dart';
+import 'package:flutter_agent_app/blocs/bloc_index.dart';
+import 'package:flutter_agent_app/common/common.dart';
+import 'package:flutter_agent_app/ui/pages/user/user_login_page.dart';
+import 'package:flutter_agent_app/utils/util_index.dart';
 
 class ProgressView extends StatelessWidget {
   @override

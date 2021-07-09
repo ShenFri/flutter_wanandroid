@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_wanandroid/common/component_index.dart';
-import 'package:flutter_wanandroid/ui/pages/author_page.dart';
-import 'package:flutter_wanandroid/ui/pages/other_page.dart';
+import 'package:flutter_agent_app/common/component_index.dart';
+import 'package:flutter_agent_app/ui/pages/author_page.dart';
+import 'package:flutter_agent_app/ui/pages/other_page.dart';
 
 class AboutPage extends StatelessWidget {
   @override

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_wanandroid/blocs/bloc_index.dart';
+import 'package:flutter_agent_app/blocs/bloc_index.dart';
 
 class StatusEvent {
   String labelId;

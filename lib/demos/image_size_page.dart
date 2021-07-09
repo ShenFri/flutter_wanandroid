@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_wanandroid/res/styles.dart';
+import 'package:flutter_agent_app/res/styles.dart';
 
 class ImageSizePage extends StatefulWidget {
   final String title;

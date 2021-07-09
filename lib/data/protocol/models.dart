@@ -1,4 +1,130 @@
 import 'package:azlistview/azlistview.dart';
+import 'package:base_library/base_library.dart';
+import 'package:flutter_agent_app/common/common.dart';
+import 'package:flutter_agent_app/common/component_index.dart';
+
+
+class BaseBean<T> {
+  String _msg;
+  String _code;
+  T data;
+
+  BaseBean(this._code,this._msg, this.data);
+
+  get code => null;
+
+
+  @override
+  String toString() {
+    StringBuffer sb = new StringBuffer('{');
+    sb.write("\"HEAD\":{\"MSG\":$_msg,"
+    "\"CODE\":$_code}");
+    sb.write(",\"data\":\"$data\"");
+    sb.write('}');
+    return sb.toString();
+  }
+}
+
+class BaseReq<T> {
+  T _body;
+  BaseReq(this._body);
+  @override
+  String toString() {
+    StringBuffer sb = new StringBuffer('{');
+    var ACCOUNT_TYPE = Constant.accountType;
+    var IP = "\"192.168.10.58\"";
+    var VERSION = 1402;
+    var TOKEN = "\"9MtidDn0Lh4OAVrF9JSqpXRG6bZZRfXAtwzkxZEsj5hSMUBS/YxZrtinVT5mJ3QFAxBfh2IDG2KMp5mV2blVWQ\u003d\u003d\"";
+    var TYPE = 2;
+    var MAC = "a4:93:3f:d7:bf:23";
+    sb.write("\"HEAD\":{\"ACCOUNT_TYPE\":$ACCOUNT_TYPE,"
+        "\"IP\":$IP,"
+        "\"VERSION\":$VERSION,"
+        "\"TOKEN\":$TOKEN,"
+        "\"TYPE\":$TYPE,"
+        "\"MAC\":\"$MAC\"}");
+    sb.write(",\"BODY\":$_body");
+    sb.write('}');
+    return sb.toString();
+  }
+}
+
+
+class REQ_MESSAGE {
+  String req_message;
+
+  REQ_MESSAGE(this.req_message);
+
+  REQ_MESSAGE.fromJson(dynamic json){
+    req_message = json["REQ_MESSAGE"];
+  }
+
+  Map<String, dynamic> toJson() {
+    var map = <String, dynamic>{};
+    map["REQ_MESSAGE"] = req_message;
+
+    return map;
+  }
+  @override
+  String toString() {
+    return '{' +
+        " \"REQ_MESSAGE\":\"" +
+        req_message +
+        "\""
+        '}';
+  }
+}
+
+class LoginReq {
+  String username;
+  String password;
+
+  LoginReq(this.username, this.password);
+
+  LoginReq.fromJson(Map<String, dynamic> json)
+      : username = json['username'],
+        password = json['password'];
+
+  Map<String, dynamic> toJson() =>
+      {
+        'username': username,
+        'password': password,
+      };
+
+  @override
+  String toString() {
+    return '{' +
+        " \"username\":\"" +
+        username +
+        "\"" +
+        ", \"password\":\"" +
+        password +
+        "\"" +
+        '}';
+  }
+}
+
+class LoginReq2 {
+  String password;
+  String accountType;
+  String mobile;
+
+  LoginReq2(this.password, this.accountType, this.mobile);
+
+  LoginReq2.fromJson(Map<String, dynamic> json) {
+    password = json['password'];
+    accountType = json['accountType'];
+    mobile = json['mobile'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['password'] = this.password;
+    data['accountType'] = this.accountType;
+    data['mobile'] = this.mobile;
+    return data;
+  }
+}
 
 class ComData {
   int size;
@@ -16,7 +142,8 @@ class ComReq {
 
   ComReq.fromJson(Map<String, dynamic> json) : cid = json['cid'];
 
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() =>
+      {
         'cid': cid,
       };
 }
@@ -58,7 +185,8 @@ class ReposModel {
         collect = json['collect'],
         type = json['type'];
 
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() =>
+      {
         'id': id,
         'originId': originId,
         'title': title,
@@ -105,7 +233,8 @@ class BannerModel {
         url = json['url'],
         imagePath = json['imagePath'];
 
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() =>
+      {
         'title': title,
         'id': id,
         'url': url,
@@ -134,12 +263,14 @@ class TreeModel extends ISuspensionBean {
       : name = json['name'],
         id = json['id'],
         children = (json['children'] as List)
-            ?.map((e) => e == null
-                ? null
-                : new TreeModel.fromJson(e as Map<String, dynamic>))
+            ?.map((e) =>
+        e == null
+            ? null
+            : new TreeModel.fromJson(e as Map<String, dynamic>))
             ?.toList();
 
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() =>
+      {
         'name': name,
         'id': id,
         'children': children,
@@ -161,33 +292,6 @@ class TreeModel extends ISuspensionBean {
   }
 }
 
-class LoginReq {
-  String username;
-  String password;
-
-  LoginReq(this.username, this.password);
-
-  LoginReq.fromJson(Map<String, dynamic> json)
-      : username = json['username'],
-        password = json['password'];
-
-  Map<String, dynamic> toJson() => {
-        'username': username,
-        'password': password,
-      };
-
-  @override
-  String toString() {
-    return '{' +
-        " \"username\":\"" +
-        username +
-        "\"" +
-        ", \"password\":\"" +
-        password +
-        "\"" +
-        '}';
-  }
-}
 
 class RegisterReq {
   String username;
@@ -201,7 +305,8 @@ class RegisterReq {
         password = json['password'],
         repassword = json['repassword'];
 
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() =>
+      {
         'username': username,
         'password': password,
         'repassword': repassword,
@@ -237,7 +342,8 @@ class UserModel {
         username = json['username'],
         password = json['password'];
 
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() =>
+      {
         'email': email,
         'icon': icon,
         'id': id,

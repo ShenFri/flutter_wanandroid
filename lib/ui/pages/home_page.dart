@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_wanandroid/common/component_index.dart';
-import 'package:flutter_wanandroid/ui/pages/rec_hot_page.dart';
+import 'package:flutter_agent_app/common/component_index.dart';
+import 'package:flutter_agent_app/ui/pages/rec_hot_page.dart';
 
 bool isHomeInit = true;
 

@@ -1,7 +1,11 @@
+import 'package:device_info/device_info.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_wanandroid/common/component_index.dart';
-import 'package:flutter_wanandroid/data/repository/user_repository.dart';
-import 'package:flutter_wanandroid/ui/pages/user/user_register_page.dart';
+import 'package:flutter_agent_app/common/component_index.dart';
+import 'package:flutter_agent_app/data/repository/user_repository.dart';
+import 'package:flutter_agent_app/ui/pages/user/user_register_page.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'dart:io';
 
 class UserLoginPage extends StatelessWidget {
   @override
@@ -34,28 +38,49 @@ class LoginBody extends StatelessWidget {
         SpUtil.getObj(BaseConstant.keyUserModel, (v) => UserModel.fromJson(v));
     _controllerName.text = userModel?.username ?? "";
 
+
+    void getDeviceInfo() async{
+      DeviceInfoPlugin deviceInfo = new DeviceInfoPlugin();
+      if(Platform.isIOS){
+        IosDeviceInfo iosDeviceInfo = await deviceInfo.iosInfo;
+        LogUtil.e("iosDeviceInfo------$iosDeviceInfo");
+      }else if(Platform.isAndroid){
+        AndroidDeviceInfo androidDeviceInfo = await deviceInfo.androidInfo;
+        LogUtil.e("androidDeviceInfo------"+androidDeviceInfo.toString());
+
+      }
+    }
+
     void _userLogin() {
       String username = _controllerName.text;
       String password = _controllerPwd.text;
-      if (username.isEmpty || username.length < 6) {
-        Util.showSnackBar(context, username.isEmpty ? "请输入用户名～" : "用户名至少6位～");
-        return;
-      }
-      if (password.isEmpty || password.length < 6) {
-        Util.showSnackBar(context, username.isEmpty ? "请输入密码～" : "密码至少6位～");
-        return;
-      }
-      LoginReq req = new LoginReq(username, password);
-      userRepository.login(req).then((UserModel model) {
-        LogUtil.e("LoginResp: ${model.toString()}");
-        Util.showSnackBar(context, "登录成功～");
+      // if (username.isEmpty || username.length < 6) {
+      //   // Util.showSnackBar(context, username.isEmpty ? "请输入用户名～" : "用户名至少6位～");
+      //   Utils.showtoast(username.isEmpty ? "请输入用户名～" : "用户名至少6位～");
+      //   return;
+      // }
+      // if (password.isEmpty || password.length < 6) {
+      //   // Util.showSnackBar(context, username.isEmpty ? "请输入密码～" : "密码至少6位～");
+      //   Utils.showtoast(username.isEmpty ? "请输入密码～" : "密码至少6位～");
+      //   return;
+      // }
+      // getDeviceInfo();
+      BaseReq req = new BaseReq(
+          new LoginReq2(password.toString(), Constant.accountType, username.toString()).toJson());
+
+      userRepository.login(req).then((LoginModel model) {
+       print("LoginModel: ${model.toString()}");
+        // Util.showSnackBar(context, "登录成功～");
+        Utils.showtoast("登录成功～");
+
         Observable.just(1).delay(new Duration(milliseconds: 500)).listen((_) {
           Event.sendAppEvent(context, Constant.type_refresh_all);
-          RouteUtil.goMain(context);
+          // RouteUtil.goMain(context);
         });
       }).catchError((error) {
-        LogUtil.e("LoginResp error: ${error.toString()}");
-        Util.showSnackBar(context, error.toString());
+        print("LoginResp error: ${error.toString()}");
+        // Util.showSnackBar(context, error.toString());
+        Utils.showtoast(error.toString());
       });
     }
 

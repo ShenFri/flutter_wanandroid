@@ -1,7 +1,7 @@
 import 'package:base_library/base_library.dart';
-import 'package:flutter_wanandroid/common/common.dart';
-import 'package:flutter_wanandroid/data/api/apis.dart';
-import 'package:flutter_wanandroid/data/protocol/models.dart';
+import 'package:flutter_agent_app/common/common.dart';
+import 'package:flutter_agent_app/data/api/apis.dart';
+import 'package:flutter_agent_app/data/protocol/models.dart';
 
 class WanRepository {
   Future<List<BannerModel>> getBanner() async {

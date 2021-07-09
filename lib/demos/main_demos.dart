@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_wanandroid/demos/index.dart';
-import 'package:flutter_wanandroid/utils/navigator_util.dart';
-import 'package:flutter_wanandroid/utils/util_index.dart';
+import 'package:flutter_agent_app/demos/index.dart';
+import 'package:flutter_agent_app/utils/navigator_util.dart';
+import 'package:flutter_agent_app/utils/util_index.dart';
 
 class ItemModel {
   String title;

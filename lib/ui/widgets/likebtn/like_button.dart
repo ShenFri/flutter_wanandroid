@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_wanandroid/ui/widgets/likebtn/model.dart';
+import 'package:flutter_agent_app/ui/widgets/likebtn/model.dart';
 import 'dot_painter.dart';
 import 'circle_painter.dart';
 

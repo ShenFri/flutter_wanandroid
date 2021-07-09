@@ -1,7 +1,8 @@
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_wanandroid/common/common.dart';
-import 'package:flutter_wanandroid/res/index.dart';
+import 'package:flutter_agent_app/common/common.dart';
+import 'package:flutter_agent_app/res/index.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lpinyin/lpinyin.dart';
 
 class Utils {
@@ -93,4 +94,16 @@ class Utils {
       return LoadStatus.success;
     }
   }
+  static showtoast(String msg){
+    Fluttertoast.showToast(
+        msg: msg,
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.BOTTOM,  // 消息框弹出的位置
+        timeInSecForIos: 1,  // 消息框持续的时间（目前的版本只有ios有效）
+        backgroundColor: Colors.grey,
+        textColor: Colors.white,
+        fontSize: 16.0
+    );
+  }
+
 }

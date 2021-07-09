@@ -1,4 +1,4 @@
-import 'package:flutter_wanandroid/blocs/bloc_provider.dart';
+import 'package:flutter_agent_app/blocs/bloc_provider.dart';
 import 'package:rxdart/rxdart.dart';
 
 class ApplicationBloc implements BlocBase {

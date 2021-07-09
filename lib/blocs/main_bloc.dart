@@ -1,9 +1,9 @@
 import 'dart:collection';
 
 import 'package:azlistview/azlistview.dart';
-import 'package:flutter_wanandroid/common/component_index.dart';
-import 'package:flutter_wanandroid/data/repository/collect_repository.dart';
-import 'package:flutter_wanandroid/data/repository/wan_repository.dart';
+import 'package:flutter_agent_app/common/component_index.dart';
+import 'package:flutter_agent_app/data/repository/collect_repository.dart';
+import 'package:flutter_agent_app/data/repository/wan_repository.dart';
 
 class MainBloc implements BlocBase {
   ///****** ****** ****** Home ****** ****** ****** /

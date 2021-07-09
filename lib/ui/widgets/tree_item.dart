@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_wanandroid/common/component_index.dart';
+import 'package:flutter_agent_app/common/component_index.dart';
 
 class TreeItem extends StatelessWidget {
   const TreeItem(this.model, {Key key}) : super(key: key);

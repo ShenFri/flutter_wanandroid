@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_wanandroid/common/component_index.dart';
+import 'package:flutter_agent_app/common/component_index.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -12,16 +12,15 @@ class SplashPageState extends State<SplashPage> {
   TimerUtil _timerUtil;
 
   List<String> _guideList = [
-    Utils.getImgPath('guide1'),
-    Utils.getImgPath('guide2'),
-    Utils.getImgPath('guide3'),
-    Utils.getImgPath('guide4'),
+    Utils.getImgPath('agent_posp_main_guide_1_bg'),
+    Utils.getImgPath('agent_posp_main_guide_2_bg'),
+    Utils.getImgPath('agent_posp_main_guide_3_bg'),
   ];
 
   List<Widget> _bannerList = new List();
 
   int _status = 0;
-  int _count = 3;
+  int _count = 2;
 
   SplashModel _splashModel;
 
@@ -51,19 +50,19 @@ class SplashPageState extends State<SplashPage> {
     if (_splashModel != null) {
       setState(() {});
     }
-    HttpUtils httpUtil = new HttpUtils();
-    httpUtil.getSplash().then((model) {
-      if (!ObjectUtil.isEmpty(model.imgUrl)) {
-        if (_splashModel == null || (_splashModel.imgUrl != model.imgUrl)) {
-          SpUtil.putObject(Constant.key_splash_model, model);
-          setState(() {
-            _splashModel = model;
-          });
-        }
-      } else {
-        SpUtil.putObject(Constant.key_splash_model, null);
-      }
-    });
+    // HttpUtils httpUtil = new HttpUtils();
+    // httpUtil.getSplash().then((model) {
+    //   if (!ObjectUtil.isEmpty(model.imgUrl)) {
+    //     if (_splashModel == null || (_splashModel.imgUrl != model.imgUrl)) {
+    //       SpUtil.putObject(Constant.key_splash_model, model);
+    //       setState(() {
+    //         _splashModel = model;
+    //       });
+    //     }
+    //   } else {
+    //     SpUtil.putObject(Constant.key_splash_model, null);
+    //   }
+    // });
   }
 
   void _initBanner() {
@@ -146,12 +145,13 @@ class SplashPageState extends State<SplashPage> {
   }
 
   void _goMain() {
-    RouteUtil.goMain(context);
+    // RouteUtil.goMain(context);
+    RouteUtil.goLogin(context);
   }
 
   Widget _buildSplashBg() {
     return new Image.asset(
-      Utils.getImgPath('splash_bg'),
+      Utils.getImgPath('agent_splash_bg'),
       width: double.infinity,
       fit: BoxFit.fill,
       height: double.infinity,

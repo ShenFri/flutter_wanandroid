@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_wanandroid/ui/widgets/widgets.dart';
+import 'package:flutter_agent_app/ui/widgets/widgets.dart';
 
 class ComListView extends StatelessWidget {
   const ComListView(
